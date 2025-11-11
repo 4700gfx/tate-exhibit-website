@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+h1, li, ul, nav{
+  font-family: "Cormorant Garamond", serif;
+}
+
+
+@theme{
+  --color-tate-black: #000000;
+  --color-tate-grey: #2C2C2C; 
+  --color-tate-secondary-grey: #787878;
+  --color-tate-platinum: #A8A8A8;
+  --color-tate-white: #F5F5F5;
+  --font-tate-primary-font: "Playfair Display", serif;
+  --font-tate-secondary-font: "Cormorant Garamond", serif;
+  
+}
