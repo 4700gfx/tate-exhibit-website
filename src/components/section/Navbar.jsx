@@ -18,13 +18,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex flex-row items-center justify-between mx-auto px-4 py-3 text-tate-platinum font-tate-primary">
-      <ul className="flex flex-row gap-6">
+    <nav className="flex flex-row items-center justify-between w-[85vw] mx-auto px-6 py-4 text-tate-platinum font-tate-primary">
+      {/* Navigation Links */}
+      <ul className="flex flex-row gap-8 items-center">
         {navItems.map((tab) => (
           <li key={tab.key}>
             <button
               onClick={() => scrollToSection(tab.sectionId)}
-              className="text-tate-platinum text-md hover:text-tate-platinum transition-colors duration-200 cursor-pointer"
+              className="text-tate-platinum text-base hover:opacity-70 transition-opacity duration-300 cursor-pointer font-medium relative after:content-[''] after:absolute after:w-0 after:h-[2px] after:bg-tate-platinum after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full"
               aria-label={`Navigate to ${tab.name} section`}
             >
               {tab.name}
@@ -33,9 +34,15 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <h1 className='text-5xl font-bold'>Tate.</h1>
+      {/* Logo/Brand */}
+      <h1 className="text-5xl font-bold absolute left-1/2 transform -translate-x-1/2">
+        Tate.
+      </h1>
 
-      <Button title="Learn More" variant='secondary' size='sm'/>
+      {/* CTA Button */}
+      <div className="flex items-center">
+        <Button title="Learn More" variant="secondary" size="sm" />
+      </div>
     </nav>
   );
 };
