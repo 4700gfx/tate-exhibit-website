@@ -24,7 +24,7 @@ const Navbar = () => {
           <li key={tab.key}>
             <button
               onClick={() => scrollToSection(tab.sectionId)}
-              className="text-tate-black text-md hover:text-tate-platinum transition-colors duration-200 cursor-pointer"
+              className="text-tate-platinum text-md hover:text-tate-platinum transition-colors duration-200 cursor-pointer"
               aria-label={`Navigate to ${tab.name} section`}
             >
               {tab.name}
@@ -33,7 +33,7 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <h1 className='text-5xl font-bold'>Tate</h1>
+      <h1 className='text-5xl font-bold'>Tate.</h1>
 
       <Button title="Learn More" variant='secondary' size='sm'/>
     </nav>
