@@ -14,7 +14,8 @@ function App() {
     <div className='main-container'>
     <Navbar />
     <Hero />
-    {/* <AboutMe />
+    <AboutMe />
+    {/*
     <Works />
     <Gallery />
     <ContactMe />
