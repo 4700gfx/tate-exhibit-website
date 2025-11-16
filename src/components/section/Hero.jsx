@@ -13,7 +13,7 @@ const Hero = () => {
   ]
 
   return (
-    <section className='bg-tate-platinum min-h-[90vh] w-[85vw] mt-4 mx-auto p-10 flex flex-col'>
+    <section className='bg-tate-platinum min-h-[90vh] w-[85vw] mt-4 mb-10 mx-auto p-10 flex flex-col'>
       {/* Header Row */}
       <div className='hero-heading-row flex flex-row justify-between items-center text-3xl font-tate-primary mb-8'>
         <h1 className='font-semibold'>Tate.</h1>

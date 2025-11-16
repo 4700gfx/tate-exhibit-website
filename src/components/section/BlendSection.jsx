@@ -4,8 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Wrapper component for blend animations with variations
-const BlendSection = ({ children, className = '', variant = 'fade' }) => {
+// Wrapper component for blend animations with proper pinning
+const BlendSection = ({ children, className = '', variant = 'fade', index = 0, isFirst = false, isLast = false }) => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -168,42 +168,120 @@ const BlendSection = ({ children, className = '', variant = 'fade' }) => {
 
     const animation = variants[variant] || variants.fade;
     
-    // Entrance animation (blend in) - smoother and more seamless
-    gsap.fromTo(
-      section,
-      animation.from,
-      {
+    // First section: show immediately without entrance animation
+    if (isFirst) {
+      gsap.set(section, {
         ...animation.to,
-        duration: 1.8,
-        ease: 'power2.inOut',
+      });
+
+      // Only add exit animation for first section
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top 85%',
-          end: 'top 15%',
-          scrub: 2, // Increased for smoother animation
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
+          start: 'top top',
+          end: '+=200%',
+          pin: true,
+          scrub: 1.5,
+          anticipatePin: 1,
+        }
+      });
 
-    // Exit animation (blend out) - smoother transition
-    gsap.to(section, {
-      ...animation.exit,
+      tl.to(section, {
+        duration: 0.5,
+      })
+      .to(section, {
+        ...animation.exit,
+        duration: 0.5,
+        ease: 'power2.in',
+      });
+
+      return () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      };
+    }
+
+    // Last section: no exit animation, stays visible
+    if (isLast) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: '+=100%',
+          pin: true,
+          scrub: 1.5,
+          anticipatePin: 1,
+          pinSpacing: true,
+        }
+      });
+
+      tl.fromTo(
+        section,
+        {
+          ...animation.from,
+        },
+        {
+          ...animation.to,
+          duration: 0.5,
+          ease: 'power2.out',
+        }
+      )
+      .to(section, {
+        duration: 0.5,
+      });
+
+      return () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      };
+    }
+
+    // Middle sections: full animation
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: 'bottom 65%',
-        end: 'bottom 15%',
-        scrub: 2, // Increased for smoother animation
+        start: 'top top',
+        end: '+=200%',
+        pin: true,
+        scrub: 1.5,
+        anticipatePin: 1,
+      }
+    });
+
+    tl.fromTo(
+      section,
+      {
+        ...animation.from,
       },
+      {
+        ...animation.to,
+        duration: 0.5,
+        ease: 'power2.out',
+      }
+    )
+    .to(section, {
+      duration: 0.3,
+    })
+    .to(section, {
+      ...animation.exit,
+      duration: 0.5,
+      ease: 'power2.in',
     });
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, [variant]);
+  }, [variant, index, isFirst, isLast]);
 
   return (
-    <div ref={sectionRef} className={`blend-section ${className}`}>
+    <div 
+      ref={sectionRef} 
+      className={`blend-section ${className}`} 
+      style={{ 
+        minHeight: '100vh',
+        width: '100%',
+        position: 'relative',
+        zIndex: 1,
+      }}
+    >
       {children}
     </div>
   );

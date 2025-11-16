@@ -9,6 +9,46 @@ body{
 }
 
 
+/* Hide scrollbar but keep functionality */
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Ensure Navbar stays on top of all sections */
+/* Ensure Navbar stays on top with spacing */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999 !important;
+  margin-bottom: 20px; /* Add space below navbar */
+}
+
+/* Add padding to sections so content doesn't hide behind navbar */
+.blend-section {
+  z-index: 1;
+  padding-top: 80px; /* Adjust this value based on your navbar height */
+}
+
+
+
+/* Ensure smooth scroll snapping */
+.main-container {
+  overflow-x: hidden;
+}
+
+.blend-section {
+  position: relative;
+  width: 100%;
+}
+
 @theme{
   --color-tate-black: #000000;
   --color-tate-grey: #2C2C2C; 
