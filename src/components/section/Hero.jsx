@@ -21,7 +21,7 @@ const Hero = () => {
       </div>
 
       {/* Tagline Section */}
-      <div className='hero-tagline font-semibold text-3xl md:text-6xl font-tate-primary mt-16 mb-auto leading-tight'>
+      <div className='hero-tagline font-bold text-3xl md:text-6xl font-tate-primary mt-16 mb-auto leading-tight'>
         <h1>From the Lens of a Creative</h1>
         <h1>Bring Memories Solidified in Light Forever</h1>
         <h1>Venture into the Creative Works of Tate</h1>
