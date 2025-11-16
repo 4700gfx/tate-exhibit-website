@@ -18,7 +18,7 @@ const AboutMe = () => {
       
       {/* Hero Heading */}
       <div className='flex mb-6'>
-        <h1 className='text-5xl font-bold w-8/12 mx-auto leading-tight'>
+        <h1 className='text-4xl font-bold w-6/12 mx-auto mb-10 leading-tight'>
           Tate is a Photographer, Painter and Creative from Miami, Florida. This website is a compilation of creative pieces spanning from Photography to Painting and more.
         </h1>
       </div>
