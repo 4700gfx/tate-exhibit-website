@@ -16,8 +16,8 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
       fade: {
         from: {
           opacity: 0,
-          scale: 0.98,
-          filter: 'blur(8px)',
+          scale: 0.95,
+          filter: 'blur(20px)',
         },
         to: {
           opacity: 1,
@@ -26,16 +26,16 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         },
         exit: {
           opacity: 0,
-          scale: 1.02,
-          filter: 'blur(8px)',
+          scale: 1.05,
+          filter: 'blur(20px)',
         }
       },
       slideUp: {
         from: {
           opacity: 0,
-          y: 100,
-          scale: 0.95,
-          filter: 'blur(12px)',
+          y: 150,
+          scale: 0.9,
+          filter: 'blur(25px)',
         },
         to: {
           opacity: 1,
@@ -45,17 +45,17 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         },
         exit: {
           opacity: 0,
-          y: -80,
-          scale: 1.05,
-          filter: 'blur(12px)',
+          y: -150,
+          scale: 1.1,
+          filter: 'blur(25px)',
         }
       },
       slideDown: {
         from: {
           opacity: 0,
-          y: -100,
-          scale: 0.95,
-          filter: 'blur(12px)',
+          y: -150,
+          scale: 0.9,
+          filter: 'blur(25px)',
         },
         to: {
           opacity: 1,
@@ -65,16 +65,16 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         },
         exit: {
           opacity: 0,
-          y: 80,
-          scale: 1.05,
-          filter: 'blur(12px)',
+          y: 150,
+          scale: 1.1,
+          filter: 'blur(25px)',
         }
       },
       zoomIn: {
         from: {
           opacity: 0,
-          scale: 0.85,
-          filter: 'blur(15px)',
+          scale: 0.7,
+          filter: 'blur(30px)',
         },
         to: {
           opacity: 1,
@@ -83,15 +83,15 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         },
         exit: {
           opacity: 0,
-          scale: 1.15,
-          filter: 'blur(15px)',
+          scale: 1.3,
+          filter: 'blur(30px)',
         }
       },
       zoomOut: {
         from: {
           opacity: 0,
-          scale: 1.15,
-          filter: 'blur(15px)',
+          scale: 1.3,
+          filter: 'blur(30px)',
         },
         to: {
           opacity: 1,
@@ -100,16 +100,16 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         },
         exit: {
           opacity: 0,
-          scale: 0.85,
-          filter: 'blur(15px)',
+          scale: 0.7,
+          filter: 'blur(30px)',
         }
       },
       slideLeft: {
         from: {
           opacity: 0,
-          x: 150,
-          scale: 0.95,
-          filter: 'blur(10px)',
+          x: 200,
+          scale: 0.9,
+          filter: 'blur(25px)',
         },
         to: {
           opacity: 1,
@@ -119,17 +119,17 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         },
         exit: {
           opacity: 0,
-          x: -150,
-          scale: 1.05,
-          filter: 'blur(10px)',
+          x: -200,
+          scale: 1.1,
+          filter: 'blur(25px)',
         }
       },
       slideRight: {
         from: {
           opacity: 0,
-          x: -150,
-          scale: 0.95,
-          filter: 'blur(10px)',
+          x: -200,
+          scale: 0.9,
+          filter: 'blur(25px)',
         },
         to: {
           opacity: 1,
@@ -139,17 +139,17 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         },
         exit: {
           opacity: 0,
-          x: 150,
-          scale: 1.05,
-          filter: 'blur(10px)',
+          x: 200,
+          scale: 1.1,
+          filter: 'blur(25px)',
         }
       },
       rotate: {
         from: {
           opacity: 0,
-          scale: 0.9,
-          rotationY: -15,
-          filter: 'blur(12px)',
+          scale: 0.85,
+          rotationY: -25,
+          filter: 'blur(25px)',
         },
         to: {
           opacity: 1,
@@ -159,9 +159,9 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         },
         exit: {
           opacity: 0,
-          scale: 1.1,
-          rotationY: 15,
-          filter: 'blur(12px)',
+          scale: 1.15,
+          rotationY: 25,
+          filter: 'blur(25px)',
         }
       }
     };
@@ -179,20 +179,21 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: '+=200%',
+          end: '+=150%',
           pin: true,
-          scrub: 1.5,
+          scrub: 2.5,
           anticipatePin: 1,
+          pinSpacing: false,
         }
       });
 
       tl.to(section, {
-        duration: 0.5,
+        duration: 0.4,
       })
       .to(section, {
         ...animation.exit,
-        duration: 0.5,
-        ease: 'power2.in',
+        duration: 0.6,
+        ease: 'power3.inOut',
       });
 
       return () => {
@@ -208,9 +209,9 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
           start: 'top top',
           end: '+=100%',
           pin: true,
-          scrub: 1.5,
+          scrub: 2.5,
           anticipatePin: 1,
-          pinSpacing: true,
+          pinSpacing: false,
         }
       });
 
@@ -221,28 +222,26 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
         },
         {
           ...animation.to,
-          duration: 0.5,
-          ease: 'power2.out',
+          duration: 1,
+          ease: 'power3.inOut',
         }
-      )
-      .to(section, {
-        duration: 0.5,
-      });
+      );
 
       return () => {
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       };
     }
 
-    // Middle sections: full animation
+    // Middle sections: full animation with overlap
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: '+=200%',
+        end: '+=150%',
         pin: true,
-        scrub: 1.5,
+        scrub: 2.5,
         anticipatePin: 1,
+        pinSpacing: false,
       }
     });
 
@@ -253,17 +252,17 @@ const BlendSection = ({ children, className = '', variant = 'fade', index = 0, i
       },
       {
         ...animation.to,
-        duration: 0.5,
-        ease: 'power2.out',
+        duration: 0.4,
+        ease: 'power3.out',
       }
     )
     .to(section, {
-      duration: 0.3,
+      duration: 0.2,
     })
     .to(section, {
       ...animation.exit,
-      duration: 0.5,
-      ease: 'power2.in',
+      duration: 0.4,
+      ease: 'power3.in',
     });
 
     return () => {
